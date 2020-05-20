@@ -11,6 +11,7 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 
 // express init
 const app = express()
+const port = process.env.PORT || 3000
 
 // setup handlebars
 app.set('view engine', 'hbs')
@@ -65,12 +66,6 @@ app.get('/weather', (req, res) => {
              })
         })
     }
-    // if (req.query.address) {    
-    //     return res.send({
-    //     forecast: 'Clear Skies',
-    //     location: 'Chico',
-    //     address: req.query.address
-    // })}
     else {
         res.send({
             error: "Address not provided"
@@ -109,6 +104,6 @@ app.get('*', (req, res) => {
 })
 
 // listening on port 3000
-app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}.`)
 })
